@@ -1,5 +1,5 @@
 <h2> What is kernel? </h1>
-The kernel is a computer program that is the core of a computer’s operating system, with complete control over everything in the system. It manages following resources of the Linux system:
+<p>The kernel is a computer program that is the core of a computer’s operating system, with complete control over everything in the system. It manages following resources of the Linux system:</p>
 <ol> <li>File management</li>
 <li>Process management</li>
 <li>I/O management</li>
@@ -105,6 +105,6 @@ chmod -x path/to/our/file/jump.sh
 <p> <b>.bashrc</b> is a shell script that Bash shell runs whenever it is started interactively. The purpose of a .bashrc file is to provide a place where you can set up variables, functions and aliases, define our prompt and define other settings that we want to use whenever we open a new terminal window.</p>
 
 <p>Now type the bleow command in the terminal to make the jump command available to every terminal session by writing it into the <b>.bashrc</b> file.</p>
-echo "source ~/path/to/our/file/jump.sh">> ~/.bashrc</br>
+echo "source ~/path/to/our/file/jump.sh">> ~/.bashrc </br>
 
-Now either restart the current terminal or open a new terminal. And now you can use the jump command :smile:
+<p>Now either restart the current terminal or open a new terminal. And now you can use the jump command :smile:</p>
