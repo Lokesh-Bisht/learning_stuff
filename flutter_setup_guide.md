@@ -30,3 +30,4 @@ Update your path - to permanently add the path
 
 <h1>Setup in VS code</h1>
 <a href = "https://flutter.dev/docs/get-started/editor?tab=vscode">Flutter extensions setup in VS code</a>
+Once, installations are complete restart VS code.
