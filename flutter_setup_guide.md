@@ -34,8 +34,9 @@ Once, installations are complete restart VS code.
 
 <h1>Android studio and emulator setup</h1>
 <ol>
- <li>
-  Download and install <a href="https://developer.android.com/studio">Android studio</a>.</li>
-<li><a href="https://developer.android.com/studio/run/emulator-acceleration#vm-linux">How to enable VM acceleration in Linux</a></li>
+ <li><a href="https://developer.android.com/studio/run/emulator-acceleration#vm-linux">How to enable VM acceleration in Linux</a></li>
+ <li>Download <a href="https://developer.android.com/studio">Android studio</a>.</li>
+ <li>Insallation guide for <a href="https://developer.android.com/studio/install#linux">Android studio</a> (just watch the video)</li>
+
 <li><a href="https://flutter.dev/docs/get-started/install/linux#android-setup">How to setup emulator</a></li>
 </ol>
