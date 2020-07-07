@@ -43,8 +43,9 @@ Once, installations are complete restart VS code.
 
 
 <h1>Problems faced while setting up Emulator</h1>
-
-<b>/dev/kvm device: permission denied. </b>
+<ol>
+ <li> 
+ <h2>/dev/kvm device: permission denied. </h2></li><br/>
 This is a common problem that occurs because the Android studio don't have access to <i>/dev/kvm</i> directory. <br/>
 Access to <i>/dev/kvm </i>directory is restricted for security purposes.<br/>
 
@@ -54,4 +55,10 @@ Access to <i>/dev/kvm </i>directory is restricted for security purposes.<br/>
 Running the above command will give complete access of the <i>/dev/kvm</i> directory to the <user> which is bad very bad! It's a bad practice.<br/>
  
  <b>Solution:</b> All you need to do is add your user to the kvm group (in /etc/group), do a logout/login.</br>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sudo adduser <username> kvm
+
+But first you need to install <a href="https://en.wikipedia.org/wiki/QEMU#:~:text=I%2FO%20accesses.-,KVM,%2C%20and%20S%2F390%20guests.">KVM (Kernel-based Virtual Machine)</a><br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sudo apt-get install qemu-kvm<br/>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sudo adduser [username] kvm
+
+
+</ol>
