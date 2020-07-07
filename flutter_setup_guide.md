@@ -40,3 +40,18 @@ Once, installations are complete restart VS code.
 
 <li><a href="https://flutter.dev/docs/get-started/install/linux#android-setup">How to setup emulator</a></li>
 </ol>
+
+
+<h1>Problems faced while setting up Emulator</h1>
+
+<b>/dev/kvm device: permission denied. </b>
+This is a common problem that occurs because the Android studio don't have access to <i>/dev/kvm</i> directory. <br/>
+Access to <i>/dev/kvm </i>directory is restricted for security purposes.<br/>
+
+<b>Note: Never ever do this</b> <br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sudo chown [username] /dev/kvm<br/>
+ 
+Running the above command will give complete access of the <i>/dev/kvm</i> directory to the <user> which is bad very bad! It's a bad practice.<br/>
+ 
+ <b>Solution:</b> All you need to do is add your user to the kvm group (in /etc/group), do a logout/login.</br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sudo adduser <username> kvm
