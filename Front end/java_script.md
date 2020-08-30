@@ -131,6 +131,8 @@ x = "John";      // Now x is a String
 
 ```js
 var cars = ["Saab", "Volvo", "BMW"];
+	or
+var cars = new Array("Saab", "Volvo", "BMW");
 ```
 </li>
 
@@ -192,6 +194,47 @@ var person = {
 };
 ```
 
+You access an object method with the following syntax:
+
+```js
+objectName.methodName()
+var name = person.fullName();
+```
+
+<h2>New keyword</h2>
+When a JavaScript variable is declared with the keyword "new", the variable is created as an object:
+
+```js
+var x = new String();        // Declares x as a String object
+var y = new Number();        // Declares y as a Number object
+var z = new Boolean();       // Declares z as a Boolean object
+```
+<b>Note: </b>Avoid String, Number, and Boolean objects. They complicate your code and slow down execution speed.
+
+
+<h1>Array functions</h1>
+
+```js
+	var person = ["John", "Doe", 46];
+	var size = person.length();		// returns the size of the array
+	person.sort();				// to sort the array in ascending order
+	var fruits = ["Apple", "Mango"];
+	fruits.push("Lemon"); 			// to push a new element in the array
+	
+	// In JS arrays are objects. typeof operator is used to tell the type of the variable.
+	typeof fruits;				// returns object
+	
+	// To solve this problem ECMAScript 5 defines a new method Array.isArray():
+	Array.isArray(fruits);   		// returns true
+	
+	// The instanceof operator returns true if an object is created by a given constructor:
+	fruits instanceof Array;   		// returns true
+```
+
+<h1>Difference Between Arrays and Objects</h1>
+
+In JavaScript, arrays use numbered indexes.  <br>
+In JavaScript, objects use named indexes. So, basically objects are like map in C++ but there are actually array and not BST's.
 
 
 
