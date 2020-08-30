@@ -216,10 +216,38 @@ var z = new Boolean();       // Declares z as a Boolean object
 
 ```js
 	var person = ["John", "Doe", 46];
-	var size = person.length();		// returns the size of the array
-	person.sort();				// to sort the array in ascending order
+	var size = person.length();				// returns the size of the array
+	person.sort();							// to sort the array in ascending order
 	var fruits = ["Apple", "Mango"];
-	fruits.push("Lemon"); 			// to push a new element in the array
+	fruits.push("Lemon"); 					// to push a new element in the array. It also returns the size of the array
+	fruits.pop();						// removes the last element from the array. It also returns the value of the popped element.
+	
+	//The splice() method can be used to add new items to an array:
+	var fruits = ["Banana", "Orange", "Apple", "Mango"];
+	fruits.splice(2, 0, "Lemon", "Kiwi");			// adds 2 element after the 2nd element. 
+	fruits.splice(0, 1); 							// removes the first element
+	
+	// The first parameter (2) defines the position where new elements should be added (spliced in).
+	// The 2nd parameter (0) defines how many elements should be removed after the index defined in first parameter.
+	// The rest of the parameters ("Lemon" , "Kiwi") define the new elements to be added.
+	// The splice() method returns an array with the deleted items:
+	
+	
+	// concat() > used for merging two arrays.
+	var arr1 = ["Cecilie", "Lone"];
+	var arr2 = ["Emil", "Tobias", "Linus"];
+	var arr3 = ["Robin", "Morgan"];
+	var new_arr = arr1.concat(arr2);  				// Concatenates (joins) arr1 and arr2
+	var new_arr = arr1.concat(arr2, arr3)			// joins arr1, arr2 and arr3
+	
+	// toString() method is used to convert an array to a string
+	var fruits = ["Banana", "Orange", "Apple", "Mango"];
+	document.getElementById("demo").innerHTML = fruits.toString();
+	
+	// Output: Banana,Orange,Apple,Mango
+	
+	
+	
 	
 	// In JS arrays are objects. typeof operator is used to tell the type of the variable.
 	typeof fruits;				// returns object
@@ -234,8 +262,199 @@ var z = new Boolean();       // Declares z as a Boolean object
 <h1>Difference Between Arrays and Objects</h1>
 
 In JavaScript, arrays use numbered indexes.  <br>
-In JavaScript, objects use named indexes. So, basically objects are like map in C++ but there are actually array and not BST's.
+In JavaScript, objects use named indexes. So, basically objects are like map in C++ but they are actually arrays and not BST's.
 
 
+<h1>Loops in JS </h1>
+<ul><li>for - loops through a block of code a number of times</li>
+<li>for/in - loops through the properties of an object</li>
+<li>for/of - loops through the values of an iterable object</li>
+	<li>while - loops through a block of code while a specified condition is true</li>
+	<li>do/while - also loops through a block of code while a specified condition is true</li>
+</ul>
+
+Since, the syntax of for, while and do while loops is same as in C++ I'm only writing about for/in and for/off loops.
+<br>
+For/in is same as for each loop in C++.<br>
+The JavaScript for/in statement loops through the properties of an object:
+
+```js
+var person = {fname:"John", lname:"Doe", age:25};
+
+var text = "";
+var x;
+for (x in person) {
+	text += person[x];
+}
+
+// Output: John Doe 25
+```
+
+The JavaScript for/of statement loops through the values of an iterable objects<br>
+for/of lets you loop over data structures that are iterable such as Arrays, Strings, Maps, NodeLists, and more.<br>
+<br>
+The for/of loop has the following syntax:
+
+```js
+for (variable of iterable) {
+  // code block to be executed
+}
+```
+
+```js
+var cars = ['BMW', 'Volvo', 'Mini'];
+
+for (let x of cars) {
+	document.write(x + "<br >");
+}
+
+var txt = 'Hellp World';
+for (let x of txt) {
+	document.write(x + "<br >");
+}
+```
+
+<h1>Arrow functions</h1>
+Arrow functions were introduced in ES6.
+
+```js
+// Before
+hello = function() {
+  	return "Hello World!";
+}
+
+// with arrow function
+hello = () => {
+  return "Hello World!";
+}
+
+// It gets shorter! If the function has only one statement, and the statement returns a value, you can remove the brackets 
+// and the return keyword
+
+hello = () => "Hello World!";
+
+// arrow functions with parameters
+hello = (val) => "Hello " + val;
+
+// In fact, if you have only one parameter, you can skip the parentheses as well:
+hello = val => "Hello " + val;
+```
+
+<h1>this in arrow function</h1>
+
+In regular functions the this keyword represented the object that called the function, which could be the window, the 
+document, a button or whatever.<br>
+<br>
+With arrow functions the this keyword always represents the object that defined the arrow function.
+<br>
+Let us take a look at two examples to understand the difference.
+<br><br>
+Both examples call a method twice, first when the page loads, and once again when the user clicks a button.
+
+The first example uses a regular function, and the second example uses an arrow function.
+
+The result shows that the first example returns two different objects (window and button), and the second example returns the window object twice, because the window object is the "owner" of the function.
+
+<br><br>
+With a regular function this represents the object that calls the function:
+
+```js
+//Regular Function:
+hello = function() {
+	document.getElementById("demo").innerHTML += this;
+}
+
+//The window object calls the function:
+window.addEventListener("load", hello);
+
+//A button object calls the function:
+document.getElementById("btn").addEventListener("click", hello);
+```
+
+<br><br>With an arrow function this represents the owner of the function:
+
+```js
+//Arrow Function:
+hello = () => {
+  	document.getElementById("demo").innerHTML += this;
+}
+
+//The window object calls the function:
+window.addEventListener("load", hello);
+
+//A button object calls the function:
+document.getElementById("btn").addEventListener("click", hello);
+```
+
+<h1>JS Objects<h1>
+
+<h2>Displaying the Object in a Loop/Acessing object propeties in loop</h2>
+
+```js
+var person = {fname:"John", lname:"Doe", age:25};	// where fname is the property name and "John" is the value
+
+for (x in person) {
+  	txt += person[x];
+}
+```
+
+<h2>Using Object.values()</h2>
+
+Any JavaScript object can be converted to an array using Object.values():
+
+```js
+var person = {name:"John", age:50, city:"New York"};
+
+var myArray = Object.values(person);
+document.getElementById("demo").innerHTML = myArray;
+
+// Output > Joh, 50, New York
+```
+
+<h2>Using JSON.stringify()</h2>
+Any JavaScript object can be stringified (converted to a string) with the JavaScript function JSON.stringify():
+
+```js
+var person = {name:"John", age:30, city: "New York"};
+
+var myString = JSON.stringify(person);
+document.getElementById("demo").innerHTML = myString;
+// Output > {"name":"John","age":50,"city":"New York"}
+```
+
+
+<h2>Adding new properties</h1>
+
+```js
+person.nationality = "English";
+```
+
+<h2>Deleting Properties</h2>
+
+The delete keyword deletes a property from an object. The delete operator is designed to be used on object properties. 
+It has no effect on variables or functions.
+
+```js
+var person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
+delete person.age;   // or delete person["age"];
+```
+
+<h2>Object methods</h2>
+
+```js
+var person = {
+	firstName: "John",
+  	lastName : "Doe",
+  	id       : 5566,
+	fullName : function() {
+    	return this.firstName + " " + this.lastName;
+  }
+};
+```
+In a function definition, this refers to the "owner" of the function.<br><br>
+
+In the example above, this is the person object that "owns" the fullName function.<br><br>
+
+In other words, this.firstName means the firstName property of this object.
 
 
