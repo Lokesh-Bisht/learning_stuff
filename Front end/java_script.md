@@ -274,6 +274,7 @@ In JavaScript, objects use named indexes. So, basically objects are like map in 
 </ul>
 
 Since, the syntax of for, while and do while loops is same as in C++ I'm only writing about for/in and for/off loops.
+
 <br>
 For/in is same as for each loop in C++.<br>
 The JavaScript for/in statement loops through the properties of an object:
@@ -457,4 +458,211 @@ In the example above, this is the person object that "owns" the fullName functio
 
 In other words, this.firstName means the firstName property of this object.
 
+<h2>JavaScript Accessors (Getters and Setters)</h2>
 
+
+```js
+// Getter:
+var person = {
+ 	firstName: "John",
+	lastName : "Doe",
+  	language : "en",
+  	get lang() {
+    	return this.language;
+  	}
+};
+
+// Display data from the object using a getter:
+document.getElementById("demo").innerHTML = person.lang;
+
+
+//Setter
+var person = {
+  	firstName: "John",
+  	lastName : "Doe",
+  	language : "",
+  	set lang(lang) {
+    	this.language = lang;
+  	}
+};
+
+// Set an object property using a setter:
+person.lang = "en";
+
+// Display data from the object:
+document.getElementById("demo").innerHTML = person.language;
+```
+
+<h2>Why Using Getters and Setters?</h2>
+<ul><li>It gives simpler syntax</li>
+	<li>It allows equal syntax for properties and methods</li>
+	<li>It can secure better data quality</li></ul>
+	
+
+<h2>Constructor</h2>
+
+<ul><li>Constructors are used to initialize properties.</li>
+	<li>it has to have the exact name "constructor"</li>
+	<li>The constructor method is called each time the class object is initialized.</li>
+	<li>If you do not have a constructor method, JavaScript will add an invisible and empty constructor method.</li>
+<li>Objects of the same type are created by calling the constructor function with the new keyword.</li></ul><br>
+
+```js
+function Person(first, last, age, eye) {
+  	this.firstName = first;
+  	this.lastName = last;
+  	this.age = age;
+  	this.eyeColor = eye;
+}
+
+var myFather = new Person("John", "Doe", 50, "blue");
+var myMother = new Person("Sally", "Rally", 48, "green");
+```
+
+<h2>The this Keyword</h2>
+
+<ul><li>
+In JavaScript, the thing called this is the object that "owns" the code.</li>
+
+<li>The value of this, when used in an object, is the object itself.</li>
+<li>
+In a constructor function this does not have a value. It is a substitute for the new object. The value of this 
+will become the new object when a new object is created.</li></ul>
+
+
+<h2>Adding a properties and methods to a Constructor</h2>
+
+```js
+function Person(first, last, age, eyecolor) {
+  	this.firstName = first;
+  	this.lastName = last;
+  	this.age = age;
+  	this.eyeColor = eyecolor;
+ 	this.name = function() {return this.firstName + " " + this.lastName;};
+}
+```
+
+<h1>Classs in JS</h1>
+
+```js
+class Car {
+  	constructor(brand) {
+    	this.carname = brand;
+  	}
+  	present() {
+    	return "I have a " + this.carname;
+  	}
+}
+
+mycar = new Car("Ford");
+document.getElementById("demo").innerHTML = mycar.present();
+```
+
+<h2>Static methods</h2>
+
+Static methods are defined on the class itself, and not on the prototype.<br>
+
+That means you cannot call a static method on the object (mycar), but on the class (Car):
+<br>
+
+```js
+class Car {
+	constructor(brand) {
+    	this.carname = brand;
+  	}
+  	static hello() {
+    	return "Hello!!";
+  	}
+}
+
+mycar = new Car("Ford");
+
+//Call 'hello()' on the class Car:
+document.getElementById("demo").innerHTML = Car.hello();
+
+//and NOT on the 'mycar' object:
+//document.getElementById("demo").innerHTML = mycar.hello();
+//this would raise an error.
+
+
+// f you want to use the mycar object inside the static method, you can send it as a parameter:
+document.getElementById("demo").innerHTML = Car.hello(mycar);
+```
+
+<h2>Inheritance</h2>
+
+Just like c++ extend keyword is used to inherit properties of another class.
+
+```js
+class Car {
+  	constructor(brand) {
+    	this.carname = brand;
+  	}
+  	present() {
+    	return 'I have a ' + this.carname;
+  	}
+}
+
+class Model extends Car {
+  	constructor(brand, mod) {
+    	super(brand);
+    	this.model = mod;
+  	}
+  	show() {
+    	return this.present() + ', it is a ' + this.model;
+  	}
+}
+
+mycar = new Model("Ford", "Mustang");
+document.getElementById("demo").innerHTML = mycar.show();
+```
+
+
+<ul><li>The super() method refers to the parent class.</li>
+	<li>By calling the super() method in the constructor method, we call the parent's constructor method and gets access 
+		to the parent's properties and methods.</li>
+	<li>Inheritance is useful for code reusability: reuse properties and methods of an existing class when you create a new class.</li>
+</ul>
+
+
+<h2>"use strict"</h2>
+
+<ul><li>The syntax in classes must be written in "strict mode"./<li>
+<li>You will get an error if you do not follow the "strict mode" rules.</li>
+	<li>Strict mode makes it easier to write "secure" JavaScript.</li>
+	<li>In normal JS, mistyping a variable name creates a new global variable. In strict mode, this will throw an error, making 
+		it impossible to accidentally create a global variable.</li>
+	<li>Using a variable, without declaring it, is not allowed
+		
+```js
+"use strict";
+x = 3.14;                // This will cause an error
+```
+</li>
+
+<li>Objects are variables too. Using an object, without declaring it, is not allowed.
+	
+```js
+"use strict";
+x = {p1:10, p2:20};      // This will cause an error
+```
+
+</li>
+
+<li>Deleting a variable (or object) is not allowed. Deleting a function is not allowed.
+	
+```js
+"use strict";
+var x = 3.14;
+delete x;    
+function x(p1, p2) {};
+delete x;                // This will cause an error
+
+// Duplicating a parameter name is not allowed:
+
+function x(p1, p1) {};   // This will cause an error
+
+
+// Octal numeric literals are not allowed:
+var x = 010;   			 // This will cause an error
+```
