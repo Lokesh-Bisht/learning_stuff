@@ -627,7 +627,7 @@ document.getElementById("demo").innerHTML = mycar.show();
 
 <h2>"use strict"</h2>
 
-<ul><li>The syntax in classes must be written in "strict mode"./<li>
+<ul><li>The syntax in classes must be written in "strict mode".</li>
 <li>You will get an error if you do not follow the "strict mode" rules.</li>
 	<li>Strict mode makes it easier to write "secure" JavaScript.</li>
 	<li>In normal JS, mistyping a variable name creates a new global variable. In strict mode, this will throw an error, making 
