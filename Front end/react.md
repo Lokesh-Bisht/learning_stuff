@@ -90,8 +90,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 const myelement = (
-  	<table>
-		<tr>
+  <table>
+	<tr>
       		<th>Name</th>
     	</tr>
     	<tr>
@@ -100,25 +100,26 @@ const myelement = (
     	<tr>
       		<td>Elsa</td>
     	</tr>
-  	</table>
+  </table>
 );
 ```
+
 
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
-	<head>
+<head>
     	<meta charset="utf-8" />
     	<meta name="viewport"
       	content="width=device-width, initial-scale=1" />
     	<title>React App</title>
- 	</head>
-  	<body>
+ </head>
+ <body>
 
     	<div id="root"></div>
 
-  	</body>
+  </body>
 </html>
 ```
 
