@@ -34,4 +34,95 @@ C:\Users\Your Name\myfirstreact>npm start
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     	// to run the react application
-<h1>Run the React Application</h1>
+
+
+<h1>First example</h1>
+
+```js
+// index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const myfirstelement = <h1>Hello React!</h1>
+
+ReactDOM.render(myfirstelement, document.getElementById('root'));
+
+// index.html:
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>React App</title>
+  </head>
+  <body>
+
+    <div id="root"></div>
+
+  </body>
+</html>
+```
+
+<h1>React Render HTML</h1>
+
+React's goal is in many ways to render HTML in a web page.
+<br>
+React renders HTML to the web page by using a function called ReactDOM.render().
+
+<br>
+Display a paragraph inside the "root" element:
+
+```js
+ReactDOM.render(<p>Hello</p>, document.getElementById('root'));
+
+<body>
+
+  <div id="root"></div>
+
+</body>
+```
+
+<h1>Second example</h1>
+
+```js
+// index.js
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const myelement = (
+  	<table>
+		<tr>
+      		<th>Name</th>
+    	</tr>
+    	<tr>
+      		<td>John</td>
+    	</tr>
+    	<tr>
+      		<td>Elsa</td>
+    	</tr>
+  	</table>
+);
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    	<meta charset="utf-8" />
+    	<meta name="viewport"
+      	content="width=device-width, initial-scale=1" />
+    	<title>React App</title>
+ 	</head>
+  	<body>
+
+    	<div id="root"></div>
+
+  	</body>
+</html>
+```
+
+
+
+ReactDOM.render(myelement, document.getElementById('root'));
+
+ 
