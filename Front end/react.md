@@ -464,3 +464,142 @@ class Car extends React.Component {
 
 ReactDOM.render(<Car model="Mustang"/>, document.getElementById('root'));
 ```
+
+<h1>React State</h1>
+
+React components has a built-in state object.
+<br>
+The state object is where you store property values that belongs to the component.
+<br>
+When the state object changes, the component re-renders.
+<br>
+
+
+<h2>Creating the state Object</h2>
+
+The state object is initialized in the constructor:
+<br>
+
+```js
+// Specify the state object in the constructor method:
+
+class Car extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {brand: "Ford"};
+  }
+  render() {
+    return (
+      <div>
+        <h1>My Car</h1>
+      </div>
+    );
+  }
+}
+```
+
+
+<h2>Using the state Object</h2>
+
+Refer to the <b>state</b> object anywhere in the component by using the <b>this.state.propertyname</b> syntax:
+<br>
+
+```js
+class Car extends React.Component {
+  constructor(props) {
+    super(props);
+    
+    // The state object can contain as many properties as you like:
+    this.state = {
+      brand: "Ford",
+      model: "Mustang",
+      color: "red",
+      year: 1964
+    };
+  }
+  render() {
+    return (
+      <div>
+        <h1>My {this.state.brand}</h1>
+        <p>
+          It is a {this.state.color}
+          {this.state.model}
+          from {this.state.year}.
+        </p>
+      </div>
+    );
+  }
+}
+```
+
+<h2>Changing the state Object</h2>
+
+To change a value in the state object, use the <b>this.setState()</b> method.
+<br>
+When a value in the state object changes, the component will re-render, meaning that the output will change according to 
+the new value(s).
+<br>
+
+
+```js
+// Add a button with an onClick event that will change the color property:
+
+class Car extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      brand: "Ford",
+      model: "Mustang",
+      color: "red",
+      year: 1964
+    };
+  }
+  changeColor = () => {
+    this.setState({color: "blue"});
+  }
+  render() {
+    return (
+      <div>
+        <h1>My {this.state.brand}</h1>
+        <p>
+          It is a {this.state.color}
+          {this.state.model}
+          from {this.state.year}.
+        </p>
+        <button
+          type="button"
+          onClick={this.changeColor}
+        >Change color</button>
+      </div>
+    );
+  }
+}
+```
+
+
+<h1>Lifecycle of Components</h1>
+
+Each component in React has a lifecycle which you can monitor and manipulate during its three main phases.
+<br>
+The three phases are: Mounting, Updating, and Unmounting.
+
+
+<h2>Mounting</h2>
+
+Mounting means putting elements into the DOM.
+<br>
+React has four built-in methods that gets called, in this order, when mounting a component:
+<br>
+
+<ol><li>
+constructor()</li>
+	<li>getDerivedStateFromProps()</li>
+<li>render()</li>
+	<li>componentDidMount()</li>
+</ol>
+
+The render() method is required and will always be called, the others are optional and will be called if you define them.
+
+
+
+
