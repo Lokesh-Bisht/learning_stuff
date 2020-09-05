@@ -792,3 +792,149 @@ class Header extends React.Component {
 ReactDOM.render(<Header />, document.getElementById('root'));
 ```
 
+<h3>render()</h3>
+
+The render() method is of course called when a component gets updated, it has to re-render the HTML to the DOM, with the new changes.
+<br>
+The example below has a button that changes the favorite color to blue:
+<br>
+
+```js
+// Click the button to make a change in the component's state:
+
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  changeColor = () => {
+    this.setState({favoritecolor: "blue"});
+  }
+  render() {
+    return (
+      <div>
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+      <button type="button" onClick={this.changeColor}>Change color</button>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Header />, document.getElementById('root'));
+```
+
+
+<h3>getSnapshotBeforeUpdate()</h3>
+
+In the <b>getSnapshotBeforeUpdate()</b> method you have access to the props and state before the update, meaning that even
+after the update, you can check what the values were before the update.
+<br>
+
+If the <b>getSnapshotBeforeUpdate()</b> method is present, you should also include the <b>componentDidUpdate()</b> method, otherwise 
+you will get an error.
+<br>
+
+The example below might seem complicated, but all it does is this:
+<br>
+
+When the component is mounting it is rendered with the favorite color "red".
+<br>
+
+When the component has been mounted, a timer changes the state, and after one second, the favorite color becomes "yellow".
+<br>
+
+This action triggers the update phase, and since this component has a <b>getSnapshotBeforeUpdate()</b> method, this method is 
+executed, and writes a message to the empty <b>DIV1</b> element.
+<br>
+
+Then the <b>componentDidUpdate()</b> method is executed and writes a message in the empty <b>DIV2</b> element:
+
+<br>
+
+```js
+// Use the getSnapshotBeforeUpdate() method to find out what the state object looked like before the update:
+
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({favoritecolor: "yellow"})
+    }, 1000)
+  }
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    document.getElementById("div1").innerHTML =
+    "Before the update, the favorite was " + prevState.favoritecolor;
+  }
+  componentDidUpdate() {
+    document.getElementById("div2").innerHTML =
+    "The updated favorite is " + this.state.favoritecolor;
+  }
+  render() {
+    return (
+      <div>
+        <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+        <div id="div1"></div>
+        <div id="div2"></div>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Header />, document.getElementById('root'));
+```
+
+
+<h3>componentDidUpdate()</h3>
+
+The <b>componentDidUpdate</b> method is called after the component is updated in the DOM.
+<br>
+
+The example below might seem complicated, but all it does is this:
+<br>
+
+When the component is mounting it is rendered with the favorite color "red".
+<br>
+
+When the component has been mounted, a timer changes the state, and the color becomes "yellow".
+<br>
+
+This action triggers the update phase, and since this component has a <b>componentDidUpdate</b> method, this method is executed 
+and writes a message in the empty <b>DIV</b> element:
+
+<br>
+
+```js
+// The componentDidUpdate method is called after the update has been rendered in the DOM:
+
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {favoritecolor: "red"};
+  }
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({favoritecolor: "yellow"})
+    }, 1000)
+  }
+  componentDidUpdate() {
+    document.getElementById("mydiv").innerHTML =
+    "The updated favorite is " + this.state.favoritecolor;
+  }
+  render() {
+    return (
+      <div>
+      <h1>My Favorite Color is {this.state.favoritecolor}</h1>
+      <div id="mydiv"></div>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(<Header />, document.getElementById('root'));
+```
+
+
+
